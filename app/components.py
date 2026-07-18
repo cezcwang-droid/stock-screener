@@ -13,7 +13,7 @@ from core.config import BASE_DIR, CACHE_DATA_JSON, DEFAULT_GC_PARAMS, DEFAULT_GC
 from core.config import AKSHARE_AVAILABLE
 from data.tdx_provider import tdx_available
 from core.scoring.chase_high import calculate_v3_total_score, _build_stock_data
-from core.scoring.lowbuy import calculate_lowbuy_score, _check_low_buy_conditions
+from core.scoring.lowbuy import calculate_lowbuy_score, _check_low_buy_conditions, _get_lowbuy_params
 from core.scoring.golden_cross import calculate_golden_cross_score
 from core.scoring.canslim import calculate_canslim_score
 from core.scoring.dilemma import calculate_dilemma_reversal_score
