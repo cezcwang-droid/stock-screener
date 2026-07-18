@@ -11,6 +11,7 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 from core.config import BASE_DIR, CACHE_DATA_JSON, DEFAULT_GC_PARAMS, DEFAULT_GC_WEIGHTS, DEFAULT_LOWBUY_PARAMS, DEFAULT_ORB_PARAMS, DEFAULT_ORB_WEIGHTS, DEFAULT_WEIGHTS, LOWBUY_WEIGHT_CONFIG, ORB_WEIGHT_CONFIG, SCORE_TIERS, TDX_AVAILABLE, WATCHLIST_JSON, WEIGHT_CONFIG, _app_cache
 from core.config import AKSHARE_AVAILABLE
+from data.tdx_provider import tdx_available
 from core.scoring.chase_high import calculate_v3_total_score, _build_stock_data
 from core.scoring.lowbuy import calculate_lowbuy_score, _check_low_buy_conditions
 from core.scoring.golden_cross import calculate_golden_cross_score
