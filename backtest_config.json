@@ -1,0 +1,10 @@
+{
+  "version": "v3",
+  "model": "追高",
+  "start_date": "2026-06-22",
+  "end_date": "2026-06-30",
+  "top_n": 3,
+  "per_stock_amount": 10000,
+  "sell_rule": "首个下跌日收盘卖出",
+  "trading_cost": 0.003
+}
