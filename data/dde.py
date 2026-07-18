@@ -28,9 +28,20 @@ def _load_dde_from_sina_cached():
         raw = r.read().decode('gbk')
         data = json.loads(raw)
 
-        if not data or len(data) == 0:
+        # ── 格式校验：新浪接口必须返回 list[dict] ──
+        if not isinstance(data, list):
+            if _VERBOSE:
+                print(f"[共振模型] 新浪资金流向接口返回格式异常 (期望list, 实际{type(data).__name__}), 内容: {str(data)[:200]}")
+            return None
+
+        if len(data) == 0:
             if _VERBOSE:
                 print("[共振模型] 新浪资金流向接口返回空数据")
+            return None
+
+        if not isinstance(data[0], dict):
+            if _VERBOSE:
+                print(f"[共振模型] 新浪资金流向首项格式异常 (期望dict, 实际{type(data[0]).__name__})")
             return None
 
         if _VERBOSE:
@@ -61,6 +72,12 @@ def _load_dde_from_sina(quotes_df=None):
     """
     raw = _load_dde_from_sina_cached()
     if raw is None or len(raw) == 0:
+        return None
+
+    # 防御性检查：raw 必须是 list[dict]
+    if not isinstance(raw, list) or not raw or not isinstance(raw[0], dict):
+        if _VERBOSE:
+            print(f"[共振模型] 新浪资金流向数据格式校验失败, type={type(raw).__name__}")
         return None
 
     import pandas as pd
